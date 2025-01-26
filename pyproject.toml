@@ -1,15 +1,26 @@
 [project]
 name = "random-shapes"
 dynamic = ["version"]
-description = "Add your description here"
+description = "Generate random shapes with ease."
 readme = "README.md"
-authors = [{ name = "relativityhd", email = "tobiashoelzer@hotmail.com" }]
+authors = [{ name = "Tobias Hölzer", email = "tobiashoelzer@hotmail.com" }]
 requires-python = ">=3.11"
 dependencies = [
     "bezier>=2024.6.20",
     "opencv-python>=4.11.0.86",
     "scipy>=1.15.1",
 ]
+license = "GNU GENERAL PUBLIC LICENSE"
+license-files = ["LICENSE"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Documentation = "https://relativityhd.github.io/random-shapes/"
+Repository = "https://github.com/relativityhd/random-shapes"
+Issues = "https://github.com/relativityhd/random-shapes/issues"
 
 [project.optional-dependencies]
 viz = ["matplotlib>=3.10.0"]
