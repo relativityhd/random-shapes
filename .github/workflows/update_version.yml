@@ -21,11 +21,15 @@ jobs:
   update-version:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+      id-token: write
+
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     outputs:
-      VERSION: ${{ steps.get_version.outputs.VERSION }}
+      VERSION: ${{ steps.update_version.outputs.TAG_NUMBER }}
 
     steps:
       - name: Checkout repository
@@ -33,14 +37,11 @@ jobs:
 
       # Do a version bump on the package
       - name: Update version by bumping git tag
+        id: update_version
         uses: leonsteinhaeuser/git-tag-bump@v1.1.0
         with:
           args: >-
             --bump ${{ github.event.inputs.bump }} --v-prefix --create --actor-name "GitHub Actions" --actor-mail "github-actions[bot]@users.noreply.github.com"
-
-      - name: Get new version
-        id: get_version
-        run: echo "VERSION=$(git describe --tags --abbrev=0)" >> $GITHUB_OUTPUT
 
   build-and-publish:
     runs-on: ubuntu-latest
