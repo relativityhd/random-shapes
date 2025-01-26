@@ -61,8 +61,6 @@ jobs:
         uses: astral-sh/setup-uv@v5
         with:
           version: "0.5.24"
-          enable-cache: true
-          cache-dependency-glob: "uv.lock"
 
       - name: "Set up Python"
         uses: actions/setup-python@v5
@@ -125,5 +123,5 @@ jobs:
         with:
           publish_branch: gh-pages
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: docs/_build/
+          publish_dir: docs/_build/html
           force_orphan: true
