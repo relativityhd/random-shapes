@@ -11,6 +11,9 @@ dependencies = [
     "scipy>=1.15.1",
 ]
 
+[project.optional-dependencies]
+viz = ["matplotlib>=3.10.0"]
+
 [build-system]
 requires = ["hatchling", "uv-dynamic-versioning"]
 build-backend = "hatchling.build"
@@ -23,7 +26,7 @@ vcs = "git"
 style = "semver"
 
 [dependency-groups]
-dev = ["ipykernel>=6.29.5", "matplotlib>=3.10.0"]
+dev = ["ipykernel>=6.29.5"]
 docs = [
     "numpydoc>=1.8.0",
     "pydata-sphinx-theme>=0.16.1",

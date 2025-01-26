@@ -998,10 +998,14 @@ dependencies = [
     { name = "scipy" },
 ]
 
+[package.optional-dependencies]
+viz = [
+    { name = "matplotlib" },
+]
+
 [package.dev-dependencies]
 dev = [
     { name = "ipykernel" },
-    { name = "matplotlib" },
 ]
 docs = [
     { name = "numpydoc" },
@@ -1018,15 +1022,13 @@ lint = [
 [package.metadata]
 requires-dist = [
     { name = "bezier", specifier = ">=2024.6.20" },
+    { name = "matplotlib", marker = "extra == 'viz'", specifier = ">=3.10.0" },
     { name = "opencv-python", specifier = ">=4.11.0.86" },
     { name = "scipy", specifier = ">=1.15.1" },
 ]
 
 [package.metadata.requires-dev]
-dev = [
-    { name = "ipykernel", specifier = ">=6.29.5" },
-    { name = "matplotlib", specifier = ">=3.10.0" },
-]
+dev = [{ name = "ipykernel", specifier = ">=6.29.5" }]
 docs = [
     { name = "numpydoc", specifier = ">=1.8.0" },
     { name = "pydata-sphinx-theme", specifier = ">=0.16.1" },
