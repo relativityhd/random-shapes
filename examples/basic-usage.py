@@ -12,17 +12,17 @@ This is a basic usage example of the `random-shapes` package.
 # With random-shapes it is easy to generate a random shape (`bezier.Curve`):
 import matplotlib.pyplot as plt
 
-from random_shapes import get_random_shape
+from random_shapes import Shape
 
-shp = get_random_shape(n=10, r=0.05, edgy=0.2)
-shp.plot(pts_per_edge=10)
+shp = Shape.random(n=10, r=0.05, edgy=0.2)
+# Shape.curve is a bezier.CurvedPolygon, since Shape is a just wrapper
+shp.curve.plot(pts_per_edge=10)
 
 
 # %%
 # This shape can then be turned into a binary image:
-from random_shapes import bezier_polygon_to_binary_image
 
-img = bezier_polygon_to_binary_image(shp, 1000, 1000)
+img = shp.rasterize(1000, 1000)
 plt.imshow(img, cmap="jet", origin="lower")
 
 
@@ -56,8 +56,8 @@ for k, n in enumerate(n_vals):
     for i, r in enumerate(r_vals):
         for j, edgy in enumerate(edgy_vals):
             c = ((i * 7 + j) % (nc - 1) + 1) / nc
-            shp = get_random_shape(n=n, r=r, edgy=edgy)
-            shp_img = bezier_polygon_to_binary_image(shp, 90, 90) * c
+            shp = Shape.random(n=n, r=r, edgy=edgy)
+            shp_img = shp.rasterize(90, 90) * c
             img[i * 100 + 5 : (i + 1) * 100 - 5, j * 100 + 5 : (j + 1) * 100 - 5] = shp_img
 
     ax = axs[k]

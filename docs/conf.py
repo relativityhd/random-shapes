@@ -73,4 +73,17 @@ html_theme_options = {
         "image_light": "_static/images/random-shape-logo.png",
         "image_dark": "_static/images/random-shape-logo.png",
     },
+    "icon_links": [
+        {
+            # Label for this link
+            "name": "GitHub",
+            # URL where the link will redirect
+            "url": "https://github.com/relativityhd/random-shapes",  # required
+            # Icon class (if "type": "fontawesome"), or path to local image (if "type": "local")
+            "icon": "fa-brands fa-square-github",
+            # The type of image to be used (see below for details)
+            "type": "fontawesome",
+        }
+    ],
+    "icon_links_label": "Quick Links",
 }

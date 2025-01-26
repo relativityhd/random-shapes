@@ -42,16 +42,19 @@ Install the optional library `matplotlib` for visualization:
 
 .. code-block:: bash
 
-    uv add matplotlib
+    pip install random-shapes[viz]
+    # or
+    uv add random-shapes --extra viz
 
 With random-shapes it is easy to generate a random shape (`bezier.Curve`):
 
 .. code-block:: python
 
-    from random_shapes import get_random_shape
+    from random_shapes import Shape
 
-    shp = get_random_shape(n=10, r=0.05, edgy=0.2)
-    shp.plot(pts_per_edge=10)
+    shp = Shape.random(n=10, r=0.05, edgy=0.2)
+    # Shape.curve is a bezier.CurvedPolygon, since Shape is a just wrapper
+    shp.curve.plot(pts_per_edge=10)
 
 
 .. image:: _static/shape-example.png
@@ -64,9 +67,7 @@ This shape can then be turned into a binary image:
 
     import matplotlib.pyplot as plt
 
-    from random_shapes import bezier_polygon_to_binary_image
-
-    binary_image = bezier_polygon_to_binary_image(shp)
+    binary_image = shp.rasterize(h=512, w=512)
     plt.imshow(binary_image, cmap="gray")
 
 .. image:: _static/rasterize-example.png

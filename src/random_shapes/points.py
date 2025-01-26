@@ -15,7 +15,7 @@ class Point:
 
 @dataclass
 class Node:
-    """A node point in 2D space."""
+    """A node point (point + angle) in 2D space."""
 
     point: Point
     angle: float
